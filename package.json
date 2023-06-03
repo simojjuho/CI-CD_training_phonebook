@@ -1,0 +1,43 @@
+{
+  "name": "puhelinluettelo_backend",
+  "version": "0.0.1",
+  "description": "\"Puhelinluettelo-sovelluksen backend-puoli.\"",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "test",
+    "build:ui": "rm -rf build && cd ~/Asiakirjat/Koodaus/'HY Full Stack'/'Osa 2'/puhelinluettelo && npm run build && cp -r build ~/Asiakirjat/Koodaus/HY_FS2022_Osa3",
+    "deploy": "fly deploy",
+    "deploy:full": "npm run build:ui && npm run deploy",
+    "logs:prod": "fly logs",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simojjuho/FullStack-osa-3.git"
+  },
+  "keywords": [
+    "puhelinluettelo",
+    "backend",
+    "harjoitus",
+    "training"
+  ],
+  "author": "Juho Simojoki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simojjuho/FullStack-osa-3/issues"
+  },
+  "homepage": "https://github.com/simojjuho/FullStack-osa-3#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.7.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.28.0",
+    "nodemon": "^2.0.20"
+  }
+}
