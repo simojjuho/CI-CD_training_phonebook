@@ -1,7 +1,11 @@
-const uri = process.env.MONGODB_URI
-const port = process.env.PORT || 3001
+const DBURI = process.env.NODE_ENV == 'test' 
+  ? process.env.MONGODB_URI_TEST
+  : process.env.NODE_ENV == 'production'
+  ? process.env.MONGODB_URI_PROD
+  : process.env.MONGODB_URI_DEV
+const PORT = process.env.PORT || 3001
 
 module.exports = {
-  uri,
-  port
+  DBURI,
+  PORT
 }
