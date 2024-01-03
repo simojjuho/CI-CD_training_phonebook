@@ -1,13 +1,12 @@
 require('dotenv').config()
 const { PORT } = require('./utils/config')
 const express = require('express')
-const Contact = require('./models/contact')
+const contactRouter = require('./controllers/contacts')
+const generalRouter = require('./controllers/general')
 const morgan = require('morgan')
 const cors = require('cors')
-const time = new Date
 const app = express()
 app.use(express.json())
-app.use(express.static('build'))
 morgan.token('bodyJSON', function (request) {
   console.log(request.body)
   return JSON.stringify(request.body)
@@ -15,75 +14,9 @@ morgan.token('bodyJSON', function (request) {
 app.use(cors())
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :bodyJSON'))
-
-
-app.get('/', (req, res) => {
-  res.send('<h1>Hello World!</h1>')
-})
-
-app.get('/info', (request, response) => {
-  Contact.find({}).then(contacts => {
-    response.send(`<p>Phonebook has info for ${contacts.length} people.</p><br />${time.toString()}`)
-  })
-})
-
-app.get('/api/persons', (request, response) => {
-  Contact.find({}).then(contacts => {
-    response.json(contacts)
-  })
-})
-
-app.get('/api/persons/:id', (request, response, next) => {
-  const id = request.params.id
-  Contact.findById(id)
-    .then(contact => {
-      if(contact) response.json(contact)
-      else {response.status(404).end()
-      }
-    })
-    .catch(error => next(error))
-})
-
-app.delete('/api/persons/:id', (request, response, next) => {
-
-  Contact.findByIdAndRemove(request.params.id)
-    .then(() => {
-      response.status(204).end()
-    })
-    .catch(error => next(error))
-})
-
-app.put('/api/persons/:id', (request, response, next) => {
-
-  const contact = {
-    name: request.body.name,
-    number: request.body.number
-  }
-  Contact.findByIdAndUpdate(
-    request.params.id,
-    contact,
-    {  new: true, runValidators: true, context: 'query'  }
-  )
-    .then(updatedContact => {
-      response.json(updatedContact)
-    })
-    .catch(error => next(error))
-})
-
-app.post('/api/persons', (request, response, next) => {
-  const contact = new Contact({
-    name: request.body.name,
-    number: request.body.number
-  })
-
-  if (contact.name === undefined || contact.number === undefined) return response.status(400).json({ error: 'content missing!' })
-
-  contact.save()
-    .then(savedNumber => {
-      response.json(savedNumber)
-    })
-    .catch(error => next(error))
-})
+app.use(express.static('build'))
+app.use(contactRouter)
+app.use(generalRouter)
 
 const unknownEndpoint = (request, response) => {
   response.status(404).send({ error: 'unknown endpoint' })
