@@ -1,13 +1,13 @@
 const Contact = require('../models/contact')
 const contactRouter = require('express').Router();
 
-contactRouter.get('/api/persons', (request, response) => {
+contactRouter.get('/', (request, response) => {
   Contact.find({}).then(contacts => {
     response.json(contacts)
   })
 })
 
-contactRouter.get('/api/persons/:id', (request, response, next) => {
+contactRouter.get('/:id', (request, response, next) => {
   const id = request.params.id
   Contact.findById(id)
     .then(contact => {
@@ -18,7 +18,7 @@ contactRouter.get('/api/persons/:id', (request, response, next) => {
     .catch(error => next(error))
 })
 
-contactRouter.delete('/api/persons/:id', (request, response, next) => {
+contactRouter.delete('/:id', (request, response, next) => {
 
   Contact.findByIdAndRemove(request.params.id)
     .then(() => {
@@ -27,7 +27,7 @@ contactRouter.delete('/api/persons/:id', (request, response, next) => {
     .catch(error => next(error))
 })
 
-contactRouter.put('/api/persons/:id', (request, response, next) => {
+contactRouter.put('/:id', (request, response, next) => {
 
   const contact = {
     name: request.body.name,
@@ -44,7 +44,7 @@ contactRouter.put('/api/persons/:id', (request, response, next) => {
     .catch(error => next(error))
 })
 
-contactRouter.post('/api/persons', (request, response, next) => {
+contactRouter.post('/', (request, response, next) => {
   const contact = new Contact({
     name: request.body.name,
     number: request.body.number

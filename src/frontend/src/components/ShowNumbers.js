@@ -2,7 +2,7 @@ const ShowNumbers = ({numbers, removeContact}) => {
 
     return (
     <>
-        <div>
+        <div id="numbersListBox">
         {numbers.map(person => 
         <Person key={person.id} person={person.name} number={person.number} id={person.id} removeContact={removeContact}/>)}
         </div>
@@ -15,9 +15,12 @@ const Person = ({person, number, id, removeContact}) => {
     const clickHandler = () => removeContact(id, person)
 
     return (
-        <p>
-            {person}: {number} <br />
-            { <button onClick={() => clickHandler()}>delete contact</button> }
-        </p>
+        <ul>
+            <li>
+                {person}: {number} <br />
+                { <button className="deleteButton" onClick={() => clickHandler()}>delete contact</button> }
+            </li>
+        </ul>
+        
     )
   }

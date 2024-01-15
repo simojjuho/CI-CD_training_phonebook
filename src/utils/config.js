@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const DBURI = process.env.NODE_ENV == 'test' 
   ? process.env.MONGODB_URI_TEST
   : process.env.NODE_ENV == 'production'
