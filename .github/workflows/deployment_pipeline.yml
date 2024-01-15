@@ -5,28 +5,31 @@ on:
     branches:
       - main
   pull_request:
-    branches: [master]
+    branches: [main]
     types: [opened, synchronize]
-    
+
 jobs:
   deployment_pipeline:
     runs-on: ubuntu-20.04
+    env:
+      GIT_DISCOVERY_ACROSS_FILESYSTEM: true
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: '18'
       - name: Install dependencies
         run: npm install
-      - name: Checking style
-        run: npm run lint
-      - name: Building project
+      - name: Check style
+        run: npm run eslint
+      - name: Build
         run: npm run build
-      - name: Tesing
+      - name: Test the code
         run: npm run test
-      - name: E2E testing with cypress
+      - name: e2e test with Cypress
         uses: cypress-io/github-action@v5
         with:
           command: npm run test:e2e
           start: npm run start-prod
           wait-on: http://localhost:5000
+    
