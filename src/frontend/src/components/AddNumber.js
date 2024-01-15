@@ -6,17 +6,22 @@ const AddNumber = ({handleNameFieldChange,
     return (
     <form onSubmit={addContact}>
         <div>
-          name: <input 
-                  value={newName}
-                  onChange={handleNameFieldChange} 
-                /><br />
-          number: <input
-                  value={newNumber}
-                  onChange={handleNumberFieldChange}
-                />
+          name:
+          <input 
+            id="nameInput"
+            value={newName}
+            onChange={handleNameFieldChange} 
+          />
+          <br />
+          number:
+          <input
+            id="numberInput"
+            value={newNumber}
+            onChange={handleNumberFieldChange}
+          />
         </div>
         <div>
-          <button type="submit">add</button>
+          <button id="addButton" type="submit">add</button>
         </div>
       </form>
       )

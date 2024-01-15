@@ -1,15 +1,16 @@
 const mongoose = require('mongoose')
 const { DBURI } = require('../utils/config')
+const logger = require('../utils/logger')
 
 
-console.log('Connecting to', DBURI )
+logger.info('Connecting to', DBURI )
 
 mongoose.connect(DBURI)
   .then(() => {
-    console.log('connected to MongoDB')
+    logger.info('connected to MongoDB')
   })
   .catch(error => {
-    console.log('error connecting to MongoDB', error.message)
+    logger.info('error connecting to MongoDB', error.message)
   })
 
 
