@@ -5,8 +5,8 @@ on:
     branches:
       - main
   pull_request:
-    branches:
-      - main
+    branches: [master]
+    types: [opened, synchronize]
     
 jobs:
   deployment_pipeline:
