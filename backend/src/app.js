@@ -18,7 +18,7 @@ morgan.token('bodyJSON', function (request) {
 
 app.use(cors())
 
-if(process.env.NODE_ENV != 'test') {
+if(process.env.NODE_ENV !== 'test') {
   app.use(morgan(':method :url :status :res[content-length] - :response-time ms :bodyJSON'))
 }
 
