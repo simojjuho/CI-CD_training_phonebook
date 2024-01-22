@@ -1,5 +1,5 @@
 const Contact = require('../models/contact')
-const contactRouter = require('express').Router();
+const contactRouter = require('express').Router()
 
 contactRouter.get('/', (request, response) => {
   Contact.find({}).then(contacts => {
