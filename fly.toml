@@ -26,3 +26,19 @@ primary_region = "arn"
 
 [processes]
   app = "node index.js"
+
+[[http_service.checks]]
+  grace_period = "10s"
+  interval = "10000"
+  method = "GET"
+  timeout = "5s"
+  path = "/test"
+
+[[services.script_checks]]
+  command = "/app/health_check.sh"
+  interval = "60s"
+  restart_limit = 0
+  timeout = "1s"
+
+[deploy]
+  strategy = "canary"

@@ -13,7 +13,7 @@ generalRouter.get('/info', (request, response) => {
 })
 
 generalRouter.get('/test', (request, response) => {
-  response.send('Working!')
+  response.send('ok')
 })
 
 module.exports = generalRouter
