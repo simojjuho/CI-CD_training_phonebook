@@ -29,16 +29,10 @@ primary_region = "arn"
 
 [[http_service.checks]]
   grace_period = "10s"
-  interval = "1000s"
+  interval = "15s"
   method = "GET"
   timeout = "5s"
   path = "/test"
-
-[[services.script_checks]]
-  command = "/app/health_check.sh"
-  interval = "60s"
-  restart_limit = 0
-  timeout = "1s"
 
 [deploy]
   strategy = "canary"
