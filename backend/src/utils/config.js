@@ -5,7 +5,7 @@ const DBURI = process.env.NODE_ENV === 'test'
   : process.env.NODE_ENV === 'production'
     ? process.env.MONGODB_URI_PROD
     : process.env.MONGODB_URI_DEV
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5001
 
 module.exports = {
   DBURI,
