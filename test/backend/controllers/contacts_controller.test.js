@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 const supertest = require('supertest')
-const app = require('../../app')
+const app = require('../../../backend/src/app')
 const api = supertest(app)
-const Contact = require('../../models/contact')
+const Contact = require('../../../backend/src/models/contact')
 const { contacts } = require('../shared/contacts')
 
 describe('Testing the functionality of database connection and the controllers', () => {

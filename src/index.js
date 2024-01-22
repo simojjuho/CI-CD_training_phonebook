@@ -1,11 +1,7 @@
-const http = require('http')
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
 
-const { PORT } = require('./utils/config')
-const app = require('./app')
-const logger = require('./utils/logger')
+const root = ReactDOM.createRoot(document.getElementById('root')).render(<App />)
 
-const server = http.createServer(app)
 
-server.listen(PORT, () => {
-  logger.info(`Server running on port ${PORT}`)
-})
