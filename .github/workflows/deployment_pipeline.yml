@@ -1,0 +1,39 @@
+name: Deployment pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+
+jobs:
+  deployment_pipeline:
+    runs-on: ubuntu-20.04
+    env:
+      GIT_DISCOVERY_ACROSS_FILESYSTEM: true
+    steps:
+      - uses: actions/checkout@v3
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Dependencies
+        run: npm install
+      - name: Linting
+        run: npm run lint
+      - name: Build
+        run: npm run build
+      - name: Testing
+        run: npm run test
+      - name: Test E2E
+        uses: cypress-io/github-action@v5
+        with:
+          command: npm run e2e
+          start: npm run start
+          wait-on: http://localhost:5001
+          
+
+
+        
