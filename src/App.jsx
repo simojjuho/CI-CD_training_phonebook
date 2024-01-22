@@ -1,3 +1,4 @@
+import React from 'react'
 import { useEffect, useState } from 'react'
 import ShowNumbers from './components/ShowNumbers'
 import AddNumber from './components/AddNumber'
@@ -14,7 +15,7 @@ const App = () => {
   const [feedBackMessage, setFeedbackMessage] = useState(null)
   const [errorMsg, setErrorMsg] = useState(null)
 
-  useEffect(()=> {
+  useEffect(() => {
     numbersService.getAll()
       .then(returnedNumbers => {
         setPersons(returnedNumbers.data)
@@ -27,8 +28,7 @@ const App = () => {
         nullErrorMsg()
       })
   },[])
- 
-  //Lisätään kontakti. Jos lisättävä nimi on jo olemassa, kutsutaan updateContact() -funktiota.
+
   const addContact = event => {
     event.preventDefault()
     const contactObject = {
@@ -55,8 +55,8 @@ const App = () => {
   }
 
   const removeContact = (id, name) => {
-    if(window.confirm(`Please confirm you want to remove ${id}: ${name} from contacts?`)){    
-      numbersService.deleteContact(id)  
+    if(window.confirm(`Please confirm you want to remove ${id}: ${name} from contacts?`)){
+      numbersService.deleteContact(id)
         .then(() => {
           setPersons(persons.filter(person => person.id !== id))
           setFeedbackMessage(`Contact ${id}: ${name} removed`)
@@ -64,25 +64,25 @@ const App = () => {
         })
         .catch(error => {
           console.log('Contact not found')
-          setErrorMsg(`Contact not found`)
+          setErrorMsg('Contact not found')
           nullErrorMsg()
           setPersons(persons.filter(person => person.id !== id))
         })
-        
-      }    
+
+    }
   }
 
 
 
   const updateContact = (person, newContact) => {
-    if(window.confirm(`Please confirm you want to update contact?`)) {
+    if(window.confirm('Please confirm you want to update contact?')) {
       numbersService.update(person.id, newContact)
         .then(returnedNumber => {
           setPersons(persons.map(contact => contact.id !== person.id ? contact : returnedNumber))
-          setFeedbackMessage(`Contact updated.`)
+          setFeedbackMessage('Contact updated.')
           nullFeedbackMessage()
         })
-        .catch(error =>{
+        .catch(error => {
           setErrorMsg(error.response.data.error)
           nullErrorMsg()
         })

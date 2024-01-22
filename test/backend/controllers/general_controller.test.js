@@ -1,5 +1,5 @@
 const supertest = require('supertest')
-const app = require('../../app')
+const app = require('../../../backend/src/app')
 const api = supertest(app)
 
 describe('Testing general controllers', () => {
