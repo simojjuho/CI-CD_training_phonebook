@@ -15,7 +15,7 @@ describe('Front page functionalities', () => {
     cy.get('input#numberInput').type('08-123456789')
     cy.get('button#addButton').click()
     cy.contains('Kekkonen')
-    cy.contains('08-123456789')    
+    cy.contains('08-123456789')
   })
 
   it('Filters only Kekkonen visible on the list', () => {
