@@ -27,13 +27,15 @@ jobs:
         run: npm run build
       - name: Testing
         run: npm run test
+        env:
+          MONGODB_URI_TEST: ${{ secrets.MONGODB_URI_TEST }}
       - name: Test E2E
         uses: cypress-io/github-action@v5
         with:
           command: npm run e2e
           start: npm run start
           wait-on: http://localhost:5001
-          
+
 
 
         
