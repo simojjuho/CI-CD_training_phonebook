@@ -17,6 +17,6 @@ describe('Testing general controllers', () => {
 
   test('/test response is Working!', async () => {
     const response = await api.get('/test')
-    expect(response.text).toBe('Working!')
+    expect(response.text).toBe('ok')
   })
 })
