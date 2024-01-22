@@ -37,6 +37,11 @@ jobs:
           wait-on: http://localhost:5001
         env:
           MONGODB_URI_TEST: ${{ secrets.MONGODB_URI_TEST }}
+      - name: Deploy
+        if: ${{ github.event_name == 'push'  &&  !contains(toJson(github.event.commits.*.message), '#skip') }}
+        run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
 
         
