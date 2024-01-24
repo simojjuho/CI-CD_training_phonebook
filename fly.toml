@@ -35,4 +35,4 @@ primary_region = "arn"
   path = "/health"
 
 [deploy]
-  strategy = "canary"
+  strategy = "bluegreen"
