@@ -16,4 +16,9 @@ generalRouter.get('/test', (request, response) => {
   response.send('ok')
 })
 
+generalRouter.get('/health', (request, response) => {
+  if(true) throw error
+  response.send('ok')
+})
+
 module.exports = generalRouter
