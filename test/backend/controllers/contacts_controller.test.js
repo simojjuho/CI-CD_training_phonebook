@@ -35,7 +35,8 @@ describe('Testing the functionality of database connection and the controllers',
   test('Response has a correct name', async () => {
     const response = await api
       .get('/api/persons')
-    expect(response.body[1].name).toBe('C.S. Lewis')
+    const names = response.body.map(contact => contact.name)
+    expect(names).toContain('C.S. Lewis')
   })
 
   afterAll(async () => {

@@ -17,7 +17,6 @@ generalRouter.get('/test', (request, response) => {
 })
 
 generalRouter.get('/health', (request, response) => {
-  if(true) throw error
   response.send('ok')
 })
 
