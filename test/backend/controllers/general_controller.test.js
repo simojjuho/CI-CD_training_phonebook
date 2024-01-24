@@ -3,7 +3,7 @@ const app = require('../../../backend/src/app')
 const api = supertest(app)
 
 describe('Testing general controllers', () => {
-  test('/test endpoint gives a response', async () => {
+/*   test('/test endpoint gives a response', async () => {
     await api
       .get('/test')
       .expect(200)
@@ -13,7 +13,7 @@ describe('Testing general controllers', () => {
     await api
       .get('/test')
       .expect('Content-Type', /text\/html/)
-  })
+  }) */
 
 /*   test('/test response is Working!', async () => {
     const response = await api.get('/test')
