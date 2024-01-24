@@ -13,7 +13,11 @@ generalRouter.get('/info', (request, response) => {
 })
 
 generalRouter.get('/test', (request, response) => {
-  if (true) throw('error...  ')
+  response.send('ok')
+})
+
+generalRouter.get('/health', (request, response) => {
+  if(true) throw error
   response.send('ok')
 })
 
