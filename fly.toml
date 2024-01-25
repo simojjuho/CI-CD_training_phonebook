@@ -31,9 +31,3 @@ primary_region = "arn"
     grace_period = "10s"
     method = "GET"
     path = "/health"
-
-[[vm]]
-  cpu_kind = "shared"
-  cpus = 1
-  memory_mb = 1024
-  processes = ["app"]
