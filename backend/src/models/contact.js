@@ -13,8 +13,6 @@ mongoose.connect(DBURI)
     logger.info('error connecting to MongoDB', error.message)
   })
 
-
-
 const contactSchema = new mongoose.Schema({
   name: {
     type: String,
