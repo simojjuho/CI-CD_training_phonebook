@@ -62,8 +62,8 @@ const App = () => {
           setFeedbackMessage(`Contact ${id}: ${name} removed`)
           nullFeedbackMessage()
         })
-        .catch(error => {
-          console.log("Contact not found")
+        .catch(() => {
+          console.log('Contact not found')
           setErrorMsg('Contact not found')
           nullErrorMsg()
           setPersons(persons.filter(person => person.id !== id))

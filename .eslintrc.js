@@ -1,4 +1,5 @@
 module.exports = {
+  'plugins': ['jest', 'cypress'],
   'env': {
     'browser': true,
     'commonjs': true,
