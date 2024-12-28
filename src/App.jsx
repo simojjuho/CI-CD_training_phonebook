@@ -62,7 +62,7 @@ const App = () => {
           setFeedbackMessage(`Contact ${id}: ${name} removed`)
           nullFeedbackMessage()
         })
-        .catch(error => {
+        .catch(() => {
           console.log('Contact not found')
           setErrorMsg('Contact not found')
           nullErrorMsg()
