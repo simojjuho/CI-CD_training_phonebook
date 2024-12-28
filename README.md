@@ -1,6 +1,11 @@
-The Full-stack course at University of Helsinki part 3. Recommendation was to put this part in separate repository.
+## Description
+The Full-stack course at University of Helsinki part 11 CI-CD.
 
-Frontend and backend for the phonebook app:
-https://winter-sea-4186.fly.dev/
+## Link to the other assignments
+The other assignments can be found from this link: https://github.com/simojjuho/full-stack-open-pokedex
+
+
+## Link to the project site
+https://ci-cd-training-phonebook.fly.dev/
 
 (Juho Simojoki)
