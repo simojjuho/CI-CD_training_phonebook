@@ -63,7 +63,7 @@ const App = () => {
           nullFeedbackMessage()
         })
         .catch(error => {
-          console.log('Contact not found')
+          console.log("Contact not found")
           setErrorMsg('Contact not found')
           nullErrorMsg()
           setPersons(persons.filter(person => person.id !== id))
