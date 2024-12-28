@@ -2,7 +2,7 @@ name: Health check
 
 on:
   schedule:
-    - cron: '00 12 1 * *'
+    - cron: '0,15,30,45 * * * *'
 
 jobs:
   check_deployment:
