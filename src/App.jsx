@@ -72,8 +72,6 @@ const App = () => {
     }
   }
 
-
-
   const updateContact = (person, newContact) => {
     if(window.confirm('Please confirm you want to update contact?')) {
       numbersService.update(person.id, newContact)
@@ -89,23 +87,11 @@ const App = () => {
     }
   }
 
-  //Viiveen jälkeen viestikenttä poistetaan
   const nullFeedbackMessage = () => setTimeout(() => setFeedbackMessage(null), 5000)
-
-
   const nullErrorMsg = () => setTimeout(() => setErrorMsg(null), 5000)
-
-
-  //Käsittelee namefield-kentän muutoksen
   const handleNameFieldChange = (event) => setNewName(event.target.value)
-
-  //Käsittelee numberfield-kentän muutoksen
   const handleNumberFieldChange = (event) => setNewNumber(event.target.value)
-
-  //Suodatin-kentän käsittely
   const handleFilterFieldChange = (event) => setNumberFilter(event.target.value)
-
-  //Palauttaa taulukon, jossa on vain suodatetut yhteystiedot.
   const filterNameList = () => persons.filter(contact => contact.name.toLowerCase().includes(filterField.toLowerCase()))
 
   return (
@@ -124,13 +110,10 @@ const App = () => {
         <h3>Filter contacts</h3>
         <NumberFilter filterField={filterField} handleFilterFieldChange={handleFilterFieldChange} />
         <h3>Numbers</h3>
-
         <ShowNumbers numbers={filterNameList()} removeContact={removeContact} />
       </div>
     </div>
-
   )
-
 }
 
 export default App
